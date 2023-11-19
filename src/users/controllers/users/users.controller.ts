@@ -4,13 +4,14 @@ import { UsersService } from 'src/users/services/users/users.service';
 
 @Controller('users')
 export class UsersController {
-    constructor(private userService: UsersService){}
+  constructor(private userService: UsersService) {}
 
-    @Get()
-    getUsers(){}
+  @Get()
+  getUsers() {}
 
-    @Post()
-    createUser(@Body() createUserDto: CreateUserDto){
-        this.userService.createUser(createUserDto);
-    }
+  @Post()
+  async createUser(@Body() createUserDto: CreateUserDto) {
+    console.log('Received DTO:', createUserDto);
+    return this.userService.createUser(createUserDto);
+  }
 }
